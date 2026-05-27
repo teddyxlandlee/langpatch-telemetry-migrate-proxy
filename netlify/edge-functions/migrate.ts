@@ -9,7 +9,7 @@ export const config = {
 function signJwt(content: object): string {
     const key: string | undefined = Netlify.env.get('REVERSE_PROXY_JWT')
     if (!key) throw new Error(`${key} is not set`)
-    return sign(content, key, {
+    return sign(content, Buffer.from(key, 'base64'), {
         expiresIn: '5min'
     })
 }
