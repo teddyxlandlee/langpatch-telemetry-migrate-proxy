@@ -54,6 +54,9 @@ async function handle(req: Request, context: Context): Promise<Response> {
         method: 'POST',
         referrer: context.url.href,
         body: delegateText,
+        headers: {
+            'X-Proxy-Forwarded': 'true',
+        },
     })
     context.waitUntil(promise)
     return new Response(null, {
