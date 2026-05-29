@@ -55,7 +55,7 @@ async function handle(req: Request, context: Context): Promise<Response> {
         referrer: context.url.href,
         body: delegateText,
         headers: {
-            'X-Proxy-Forwarded': 'true',
+            'Via': 'LangPatch-Migrate-Proxy',
         },
     })
     context.waitUntil(promise)
