@@ -56,6 +56,7 @@ async function handle(req: Request, context: Context): Promise<Response> {
         body: delegateText,
         headers: {
             'Via': 'LangPatch-Migrate-Proxy',
+            'Content-Type': 'text/plain; charset=utf-8',
         },
     })
     context.waitUntil(promise)
