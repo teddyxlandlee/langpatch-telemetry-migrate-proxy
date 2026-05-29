@@ -1,5 +1,5 @@
 import { Context } from '@netlify/edge-functions'
-import { sign } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 
 //noinspection JSUnusedGlobalSymbols
 export const config = {
@@ -9,7 +9,7 @@ export const config = {
 function signJwt(content: object): string {
     const key: string | undefined = Netlify.env.get('REVERSE_PROXY_JWT')
     if (!key) throw new Error(`${key} is not set`)
-    return sign(content, Buffer.from(key, 'base64'), {
+    return jwt.sign(content, Buffer.from(key, 'base64'), {
         expiresIn: '5min'
     })
 }

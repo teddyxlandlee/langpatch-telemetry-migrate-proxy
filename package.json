@@ -8,6 +8,7 @@
   "scripts": {},
   "devDependencies": {
     "@netlify/edge-functions": "^3.0.7",
-    "@types/jsonwebtoken": "^9.0.10"
+    "@types/jsonwebtoken": "^9.0.10",
+    "typescript": "^6.0.3"
   }
 }
