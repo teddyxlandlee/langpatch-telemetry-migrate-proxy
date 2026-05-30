@@ -30,17 +30,7 @@ async function handle(req: Request, context: Context): Promise<Response> {
     }
 
     const requestText = await req.text()
-    let disableGeoContextInjection: boolean = false
-    try {
-        const requestAsJson = JSON.parse(requestText)
-        if (typeof requestAsJson === 'object') {
-            const telemetryLevel = requestAsJson.telemetry_level
-            disableGeoContextInjection = parseFloat(telemetryLevel) < 1
-            // NaN also returns false
-        }
-    } catch {
-        // may be syntax error or some unexpected ones. Silent ignore.
-    }
+    const disableGeoContextInjection: boolean = false
 
     const geoContext: object = disableGeoContextInjection ? {} : {
         country: context.geo.country,
